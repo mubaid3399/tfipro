@@ -1,13 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useMemo } from 'react'
 import { products as initialProducts } from '../data/products'
+import ToastNotification from '../components/common/ToastNotification'
 
 export const ProductContext = createContext(null)
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState(initialProducts)
   const [cart, setCart] = useState([])
+  const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [toastMessage, setToastMessage] = useState('')
+  const [isToastVisible, setIsToastVisible] = useState(false)
 
   const addToCart = (product, quantity = 1) => {
     setCart((prevCart) => {
@@ -21,6 +25,8 @@ export const ProductProvider = ({ children }) => {
       }
       return [...prevCart, { product, quantity }]
     })
+    setToastMessage('Item added to your bag')
+    setIsToastVisible(true)
   }
 
   const removeFromCart = (productId) => {
@@ -100,6 +106,8 @@ export const ProductProvider = ({ children }) => {
     clearCart,
     cartCount,
     cartTotal,
+    isCartOpen,
+    setIsCartOpen,
     searchQuery,
     setSearchQuery,
     currency: 'Rs.',
@@ -108,6 +116,11 @@ export const ProductProvider = ({ children }) => {
   return (
     <ProductContext.Provider value={value}>
       {children}
+      <ToastNotification 
+        message={toastMessage} 
+        isVisible={isToastVisible} 
+        onHide={() => setIsToastVisible(false)} 
+      />
     </ProductContext.Provider>
   )
 }

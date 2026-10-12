@@ -80,14 +80,14 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
         </Link>
 
         {/* Hover Quick Action Drawer */}
-        <div className="absolute inset-x-2 bottom-2 z-10 flex items-center justify-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+        <div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-center gap-2 opacity-0 translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-primary py-2 px-3 text-xs font-semibold text-white shadow-md transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            className="group/btn flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
             aria-label={`Add ${title} to cart`}
           >
-            <ShoppingBag size={13} />
+            <ShoppingBag size={16} className="transition-transform duration-300 group-hover/btn:scale-110" />
             <span>Add to Cart</span>
           </button>
           {onQuickView && (
@@ -97,10 +97,10 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
                 e.preventDefault()
                 onQuickView(product)
               }}
-              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-white text-slate-700 shadow-md transition-colors hover:bg-slate-100"
+              className="group/btn2 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-white/95 text-slate-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-slate-900 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
               aria-label={`Quick view ${title}`}
             >
-              <Eye size={14} />
+              <Eye size={18} className="transition-transform duration-300 group-hover/btn2:scale-110" />
             </button>
           )}
         </div>

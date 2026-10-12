@@ -106,7 +106,7 @@ const OfferBar = () => {
           return (
             <p
               key={text}
-              className="offer absolute inset-0 flex items-center justify-center px-4 text-center text-[0.9rem] font-medium uppercase tracking-[0.2em] sm:text-xs"
+              className="offer absolute inset-0 flex items-center justify-center px-4 text-center sm:text-xs text-[0.8rem] font-medium uppercase tracking-[0.2em] sm:text-xs"
               aria-hidden={active !== i}
             >
               <span className="sr-only">{text}</span>
