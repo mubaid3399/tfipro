@@ -2,7 +2,7 @@ import { Volume2, Feather, Bluetooth, ShieldCheck } from 'lucide-react'
 
 const BrandVideoSection = () => {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
+    <section className="relative overflow-hidden bg-white py-6 sm:py-12 md:py-16 lg:py-24">
       {/* Massive Background Text */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
         <span className="whitespace-nowrap text-[20vw] font-black tracking-tighter text-slate-50 opacity-60 select-none">

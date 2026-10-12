@@ -66,9 +66,9 @@ const Hero = () => {
 
       gsap.fromTo(
         viewportRef.current,
-        { clipPath: 'inset(0% 50% 0% 50%)' },
+        { clipPath: 'inset(0% 50% 0% 50% round 1rem)' },
         {
-          clipPath: 'inset(0% 0% 0% 0%)',
+          clipPath: 'inset(0% 0% 0% 0% round 1rem)',
           duration: 1.2,
           ease: 'power4.inOut',
           clearProps: 'clipPath',
@@ -238,7 +238,7 @@ const Hero = () => {
 
   return (
     <section
-      className="w-full"
+      className="mx-auto w-[95%]"
       aria-label="Featured promotions"
       aria-roledescription="carousel"
       onMouseEnter={() => setPause('hover', true)}
@@ -254,7 +254,7 @@ const Hero = () => {
     >
       <div
         ref={viewportRef}
-        className="aspect-[3/1] w-full touch-pan-y cursor-grab overflow-hidden active:cursor-grabbing"
+        className="aspect-[3/1] w-full touch-pan-y cursor-grab overflow-hidden rounded-2xl isolate active:cursor-grabbing"
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
         onPointerUp={endDrag}

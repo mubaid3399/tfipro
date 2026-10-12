@@ -80,15 +80,15 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
         </Link>
 
         {/* Hover Quick Action Drawer */}
-        <div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-center gap-2 opacity-0 translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0">
+        <div className="absolute inset-x-2 bottom-2 z-10 flex items-center justify-center gap-1.5 opacity-0 translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 sm:inset-x-3 sm:bottom-3 sm:gap-2">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="group/btn flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900"
+            className="group/btn flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-2 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-slate-900/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 active:scale-[0.98] active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:gap-2 sm:rounded-xl sm:px-4 sm:py-2.5 sm:text-sm sm:font-semibold"
             aria-label={`Add ${title} to cart`}
           >
-            <ShoppingBag size={16} className="transition-transform duration-300 group-hover/btn:scale-110" />
-            <span>Add to Cart</span>
+            <ShoppingBag className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Add to Cart</span>
           </button>
           {onQuickView && (
             <button
@@ -97,10 +97,10 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
                 e.preventDefault()
                 onQuickView(product)
               }}
-              className="group/btn2 flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-white/95 text-slate-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-slate-900 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              className="group/btn2 flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white/95 text-slate-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-slate-900 hover:shadow-xl active:scale-[0.98] active:translate-y-0 sm:h-10 sm:w-10 sm:rounded-xl"
               aria-label={`Quick view ${title}`}
             >
-              <Eye size={18} className="transition-transform duration-300 group-hover/btn2:scale-110" />
+              <Eye className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn2:scale-110 sm:h-[18px] sm:w-[18px]" />
             </button>
           )}
         </div>
