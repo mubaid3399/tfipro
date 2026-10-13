@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Sparkles, Headphones, Mic, Briefcase, Zap, Music } from 'lucide-react'
+import { ArrowRight, Sparkles, Headphones, Mic, Briefcase, Zap, Music, Watch } from 'lucide-react'
 import ProductCard from '../common/ProductCard'
 import { products } from '../../data/products'
 
@@ -11,6 +11,13 @@ const CATEGORIES = [
     icon: Sparkles,
     description: 'Browse our complete catalog of audio and tech gear',
     filter: () => true,
+  },
+  {
+    id: 'watches',
+    label: 'Smartwatches',
+    icon: Watch,
+    description: 'AMOLED displays, health tracking, sports fitness & luxury gift bundles',
+    filter: (p) => p.id.startsWith('watch') || p.subcategory === 'Smartwatches',
   },
   {
     id: 'earbuds',
@@ -44,8 +51,9 @@ const CATEGORIES = [
     id: 'accessories',
     label: 'Tech Accessories',
     icon: Zap,
-    description: 'Fast wireless charging stations, high-capacity power banks & tools',
-    filter: (p) => p.id.startsWith('accessory'),
+    filter: (p) =>
+      (p.id.startsWith('accessory') || p.id.startsWith('stand')) &&
+      p.subcategory !== 'Smartwatches',
   },
 ]
 

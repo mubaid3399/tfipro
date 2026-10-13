@@ -1,15 +1,8 @@
 import { useState, useEffect } from 'react'
 import { ArrowUp } from 'lucide-react'
-import { useLocation } from 'react-router-dom'
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const { pathname } = useLocation()
-
-  // Automatically scroll to the top when navigating to a new page
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
 
   useEffect(() => {
     const toggleVisibility = () => {

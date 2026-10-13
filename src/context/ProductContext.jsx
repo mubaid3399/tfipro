@@ -86,7 +86,17 @@ export const ProductProvider = ({ children }) => {
   )
 
   const accessories = useMemo(
-    () => products.filter((p) => p.id.startsWith('accessory')),
+    () => products.filter((p) => p.id.startsWith('accessory') || p.id.startsWith('stand')),
+    [products]
+  )
+
+  const watches = useMemo(
+    () => products.filter((p) => p.id.startsWith('watch')),
+    [products]
+  )
+
+  const stands = useMemo(
+    () => products.filter((p) => p.id.startsWith('stand')),
     [products]
   )
 
@@ -99,6 +109,10 @@ export const ProductProvider = ({ children }) => {
     bags,
     microphones,
     accessories,
+    watches,
+    stands,
+
+
     cart,
     addToCart,
     removeFromCart,

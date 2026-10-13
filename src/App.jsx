@@ -13,11 +13,13 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import ShippingPolicy from './pages/ShippingPolicy'
 import ScrollToTop from './components/common/ScrollToTop'
+import TopToScroll from './components/common/TopToScroll'
 
 const App = () => {
   return (
     <ProductProvider>
       <BrowserRouter>
+        <TopToScroll />
         <OfferBar />
         <Navbar />
         <CartSidebar />

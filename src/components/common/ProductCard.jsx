@@ -9,6 +9,7 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
 
   const handleAddToCart = (e) => {
     e.preventDefault()
+    e.stopPropagation()
     if (onAddToCart) {
       onAddToCart(product)
     } else {
@@ -51,11 +52,11 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
           )}
         </div>
 
-        {/* Favorite / Wishlist button */}
+        {/* Favorite / Wishlist button - visible on mobile touch, hover on desktop */}
         <button
           type="button"
           aria-label={`Save ${title} to wishlist`}
-          className="absolute right-2.5 top-2.5 z-10 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-white/90 text-slate-600 shadow-sm opacity-0 transition-all duration-200 hover:bg-white hover:text-rose-600 group-hover:opacity-100"
+          className="absolute right-2.5 top-2.5 z-10 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-white/90 text-slate-600 shadow-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-all duration-200 hover:bg-white hover:text-rose-600"
           onClick={(e) => {
             e.stopPropagation()
             e.preventDefault()
@@ -79,12 +80,12 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
           />
         </Link>
 
-        {/* Hover Quick Action Drawer */}
-        <div className="absolute inset-x-2 bottom-2 z-10 flex items-center justify-center gap-1.5 opacity-0 translate-y-4 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0 sm:inset-x-3 sm:bottom-3 sm:gap-2">
+        {/* Quick Action Drawer - Always visible on mobile touch, slide-up hover on desktop */}
+        <div className="absolute inset-x-2 bottom-2 z-10 flex items-center justify-center gap-1.5 opacity-100 translate-y-0 sm:opacity-0 sm:translate-y-4 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 [@media(hover:none)]:opacity-100 [@media(hover:none)]:translate-y-0 transition-all duration-300 ease-out sm:inset-x-3 sm:bottom-3 sm:gap-2">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="group/btn flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-2 py-1.5 text-[11px] font-medium text-white shadow-lg shadow-slate-900/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 active:scale-[0.98] active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 sm:gap-2 sm:rounded-xl sm:px-4 sm:py-2.5 sm:text-sm sm:font-semibold"
+            className="group/btn flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-2 py-2 text-[11px] font-semibold text-white shadow-lg shadow-slate-900/25 transition-all duration-200 active:scale-95 sm:rounded-xl sm:px-4 sm:py-2.5 sm:text-sm"
             aria-label={`Add ${title} to cart`}
           >
             <ShoppingBag className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover/btn:scale-110 sm:h-4 sm:w-4" />
@@ -95,9 +96,10 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
               type="button"
               onClick={(e) => {
                 e.preventDefault()
+                e.stopPropagation()
                 onQuickView(product)
               }}
-              className="group/btn2 flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white/95 text-slate-700 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-slate-900 hover:shadow-xl active:scale-[0.98] active:translate-y-0 sm:h-10 sm:w-10 sm:rounded-xl"
+              className="group/btn2 flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white/95 text-slate-700 shadow-md backdrop-blur-sm transition-all duration-200 active:scale-95 sm:h-10 sm:w-10 sm:rounded-xl"
               aria-label={`Quick view ${title}`}
             >
               <Eye className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn2:scale-110 sm:h-[18px] sm:w-[18px]" />
