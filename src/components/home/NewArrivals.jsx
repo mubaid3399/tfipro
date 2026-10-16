@@ -8,7 +8,6 @@ const arrivals = [
   { image: asset.overEarHeadphones, name: 'Over-ear headphones', category: 'Headphones' },
   { image: asset.compactBackpack, name: 'Compact backpack', category: 'Bags' },
   { image: asset.powerBank, name: 'Portable power bank', category: 'Power' },
-  { image: asset.rgbDesktopMicrophone, name: 'RGB desktop microphone', category: 'Microphones' },
   { image: asset.wirelessEarbudsSet, name: 'Wireless earbuds set', category: 'Earbuds' },
   { image: asset.pinkCatEarHeadphones, name: 'Pink cat-ear headphones', category: 'Headphones' },
   { image: asset.leatherMessengerBag, name: 'Leather messenger bag', category: 'Bags' },

@@ -44,7 +44,7 @@ const CATEGORIES = [
     id: 'microphones',
     label: 'Microphones',
     icon: Mic,
-    description: 'Studio-grade vocal recording, podcasting & RGB gaming streaming mics',
+    description: 'Wireless microphones for audio recording, podcasting & speaking',
     filter: (p) => p.id.startsWith('microphone'),
   },
   {

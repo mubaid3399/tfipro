@@ -63,7 +63,7 @@ const CATEGORY_TABS = [
     id: 'microphones',
     label: 'Microphones',
     icon: Mic,
-    description: 'Studio and RGB desktop microphones for streaming, calls and recording.',
+    description: 'Wireless microphones for audio recording, streaming, calls and speaking.',
   },
   {
     id: 'stands',

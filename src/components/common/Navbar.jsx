@@ -59,10 +59,10 @@ const megaMenuCategories = [
   {
     id: 'microphones',
     label: 'Microphones',
-    sub: 'Studio & RGB desktop',
+    sub: 'Wireless recording & audio',
     to: '/products?category=microphones',
-    image: asset.rgbDesktopMicrophone,
-    count: '4 Products',
+    image: asset.wirelessMicrophoneSet,
+    count: '2 Products',
   },
   {
     id: 'stands',
@@ -70,7 +70,7 @@ const megaMenuCategories = [
     sub: 'Laptop risers & 360° swivels',
     to: '/products?category=stands',
     image: asset.foldableLaptopRiserStand,
-    count: '5 Products',
+    count: '9 Products',
   },
   {
     id: 'accessories',
@@ -78,7 +78,7 @@ const megaMenuCategories = [
     sub: 'Fast chargers & power banks',
     to: '/products?category=accessories',
     image: asset.powerBank,
-    count: '7 Products',
+    count: '9 Products',
   },
 ]
 

@@ -1,17 +1,44 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, useMemo } from 'react'
+import { createContext, useContext, useState, useMemo, useEffect } from 'react'
 import { products as initialProducts } from '../data/products'
 import ToastNotification from '../components/common/ToastNotification'
 
 export const ProductContext = createContext(null)
 
+const CART_STORAGE_KEY = 'tfipro_cart'
+
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState(initialProducts)
-  const [cart, setCart] = useState([])
+  
+  // Initialize cart from localStorage so items persist on reload
+  const [cart, setCart] = useState(() => {
+    try {
+      const stored = localStorage.getItem(CART_STORAGE_KEY)
+      return stored ? JSON.parse(stored) : []
+    } catch (e) {
+      console.warn('Could not load cart from localStorage:', e)
+      return []
+    }
+  })
+
+  // Automatically sync cart changes to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart))
+    } catch (e) {
+      console.warn('Could not save cart to localStorage:', e)
+    }
+  }, [cart])
+
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [toastMessage, setToastMessage] = useState('')
   const [isToastVisible, setIsToastVisible] = useState(false)
+
+  const showToast = (message = 'Item added to your bag') => {
+    setToastMessage(message)
+    setIsToastVisible(true)
+  }
 
   const addToCart = (product, quantity = 1) => {
     setCart((prevCart) => {
@@ -25,8 +52,7 @@ export const ProductProvider = ({ children }) => {
       }
       return [...prevCart, { product, quantity }]
     })
-    setToastMessage('Item added to your bag')
-    setIsToastVisible(true)
+    showToast('Item added to your bag')
   }
 
   const removeFromCart = (productId) => {
@@ -45,7 +71,14 @@ export const ProductProvider = ({ children }) => {
     )
   }
 
-  const clearCart = () => setCart([])
+  const clearCart = () => {
+    setCart([])
+    try {
+      localStorage.removeItem(CART_STORAGE_KEY)
+    } catch {
+      // Ignore
+    }
+  }
 
   const cartCount = useMemo(
     () => cart.reduce((total, item) => total + item.quantity, 0),
@@ -111,6 +144,7 @@ export const ProductProvider = ({ children }) => {
     accessories,
     watches,
     stands,
+    showToast,
 
 
     cart,

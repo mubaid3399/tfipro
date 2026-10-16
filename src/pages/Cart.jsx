@@ -145,14 +145,14 @@ const Cart = () => {
               </span>
             </div>
             <div className="flex justify-between">
-              <span>Shipping</span>
-              <span className="font-semibold text-emerald-600">Free</span>
+              <span>Delivery Charges</span>
+              <span className="font-semibold text-slate-900">Rs.200</span>
             </div>
           </div>
 
           <div className="mt-4 flex justify-between text-base font-bold text-slate-900">
             <span>Total</span>
-            <span className="text-xl text-primary">Rs.{cartTotal.toLocaleString()}</span>
+            <span className="text-xl text-primary">Rs.{(cartTotal + 200).toLocaleString()}</span>
           </div>
 
           <Link

@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const OFFERS = [
-  'Free shipping on orders over $100',
-  'Take 10% off your first order with code WELCOME10',
+  'Fast & reliable nationwide delivery (Rs. 200 flat rate)',
+  'Take 10% off your first order with code TFIPRO10',
   'Discover our latest collection',
 ]
 

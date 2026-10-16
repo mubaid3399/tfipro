@@ -9,10 +9,14 @@ import Contact from './pages/Contact'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductsDetail from './pages/ProductsDetail'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import ShippingPolicy from './pages/ShippingPolicy'
-import ScrollToTop from './components/common/ScrollToTop'
+import FloatingCartButton from './components/common/FloatingCartButton'
+import FlootWhatsapp from './components/common/FlootWhatsapp'
+import Reminder from './components/common/Reminder'
 import TopToScroll from './components/common/TopToScroll'
 
 const App = () => {
@@ -27,6 +31,8 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:Id" element={<ProductsDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -34,7 +40,9 @@ const App = () => {
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-        <ScrollToTop />
+        <FloatingCartButton />
+        <FlootWhatsapp />
+        <Reminder />
         <Footer />
       </BrowserRouter>
     </ProductProvider>

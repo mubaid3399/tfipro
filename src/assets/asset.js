@@ -18,11 +18,11 @@ import favicon from './tfipro-favicon.png'
 import logo from './tfipro-logo.png'
 import blackBluetoothEarbuds from './earbud01.jfif'
 import blackNeckbandEarphones from './earbud02.jfif'
-import neckbandWhite from './neckbimg01.jfif'
-import neckbandBlack from './neckbimg02.jfif'
-import neckbandBlue from './neckbimg03.jfif'
-import neckbandRed from './neckbimg04.jfif'
-import neckbandGold from './neckbimg05.jfif'
+import neckbandBlack from './neckbimg01.jfif'
+import neckbandBlue from './neckbimg02.jfif'
+import neckbandPink from './neckbimg03.jfif'
+import neckbandWhite from './neckbimg04.jfif'
+import neckbandYellow from './neckbimg05.jfif'
 import blackWiredInEarEarphones from './earbud03.jfif'
 import blackWirelessEarbuds from './earbud04.jfif'
 import earbudsWithChargingCase from './earbud05.jfif'
@@ -69,8 +69,21 @@ import proSwivelMobileStand from './standprod img03.jfif'
 import speakerPhoneStandDock from './standprod img04.jfif'
 import telescopicLiveStreamPhoneMount from './standprod img05.jfif'
 
+// Newly Added Products
+import adjustableTripodStand from './3.5ft Adjustable Tripod Stand for Mobile & Camera with Bag.jpeg'
+import m3SmartCarMount from './Gemini_Generated_Image_m52poom52poom52p.jfif'
+import selfieStickTripod from './Selfie Stick 360° Rotating Black ABS Plastic.jpeg'
+import wirelessLavalierMic from './micprod.jfif'
+import usbCPowerAdapter from './poweradaptor.jpeg'
+import typeCOtgAudioAdapter from './powerbank.jfif'
+import wirelessCarMountStand from './wirelessstand.jpeg'
+import aboutHero from './about-hero.jpg'
+import aboutLab from './about-lab.jpg'
+
 
 export const asset = {
+  aboutHero,
+  aboutLab,
   powerAdapter,
   powerBank,
   precisionScrewdriverRepairKit,
@@ -91,16 +104,17 @@ export const asset = {
   logo,
   blackBluetoothEarbuds,
   blackNeckbandEarphones,
-  neckbandWhite,
   neckbandBlack,
   neckbandBlue,
-  neckbandRed,
-  neckbandGold,
-  neckbimg01: neckbandWhite,
-  neckbimg02: neckbandBlack,
-  neckbimg03: neckbandBlue,
-  neckbimg04: neckbandRed,
-  neckbimg05: neckbandGold,
+  neckbandPink,
+  neckbandWhite,
+  neckbandYellow,
+  neckbandGold: neckbandYellow,
+  neckbimg01: neckbandBlack,
+  neckbimg02: neckbandBlue,
+  neckbimg03: neckbandPink,
+  neckbimg04: neckbandWhite,
+  neckbimg05: neckbandYellow,
   blackWiredInEarEarphones,
   blackWirelessEarbuds,
   earbudsWithChargingCase,
@@ -164,6 +178,14 @@ export const asset = {
   standprod03: proSwivelMobileStand,
   standprod04: speakerPhoneStandDock,
   standprod05: telescopicLiveStreamPhoneMount,
+  // Newly Added Products
+  adjustableTripodStand,
+  m3SmartCarMount,
+  selfieStickTripod,
+  wirelessLavalierMic,
+  usbCPowerAdapter,
+  typeCOtgAudioAdapter,
+  wirelessCarMountStand,
 }
 
 export default asset
