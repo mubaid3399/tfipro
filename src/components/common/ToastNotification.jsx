@@ -13,13 +13,17 @@ const ToastNotification = ({ message, isVisible, onHide }) => {
   }, [onHide])
 
   useEffect(() => {
+    const toastEl = toastRef.current
+    const containerEl = containerRef.current
+    if (!toastEl || !containerEl) return
+
     if (isVisible) {
       // Ensure the container is visible
-      gsap.set(containerRef.current, { display: 'flex' })
+      gsap.set(containerEl, { display: 'flex' })
 
       // Swing from back to front (3D effect)
       gsap.fromTo(
-        toastRef.current,
+        toastEl,
         { 
           autoAlpha: 0, 
           scale: 0.5, 
@@ -40,7 +44,7 @@ const ToastNotification = ({ message, isVisible, onHide }) => {
 
       const timer = setTimeout(() => {
         // Swing back in the opposite direction
-        gsap.to(toastRef.current, {
+        gsap.to(toastEl, {
           autoAlpha: 0,
           scale: 0.5,
           rotationX: 60,
@@ -49,17 +53,17 @@ const ToastNotification = ({ message, isVisible, onHide }) => {
           duration: 0.5,
           ease: "back.in(2)",
           onComplete: () => {
-            gsap.set(containerRef.current, { display: 'none' })
+            gsap.set(containerEl, { display: 'none' })
             if (onHideRef.current) {
               onHideRef.current()
             }
           }
         })
-      }, 2500) // Show for 2.5 seconds
+      }, 3000) // Show for 3 seconds
 
       return () => {
         clearTimeout(timer)
-        gsap.killTweensOf(toastRef.current)
+        gsap.killTweensOf(toastEl)
       }
     }
   }, [isVisible])

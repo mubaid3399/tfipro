@@ -26,7 +26,7 @@ const FlootWhatsapp = () => {
       </span>
 
       <a
-        href="https://wa.me/923000000000?text=Hi%20TFiPro!%20I%20have%20an%20inquiry%20about%20your%20products."
+        href="https://wa.me/923213314635?text=Hi%20TFiPro!%20I%20have%20an%20inquiry%20about%20your%20products."
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with TFiPro on WhatsApp"

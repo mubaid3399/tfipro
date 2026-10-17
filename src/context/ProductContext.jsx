@@ -37,10 +37,20 @@ export const ProductProvider = ({ children }) => {
 
   const showToast = (message = 'Item added to your bag') => {
     setToastMessage(message)
-    setIsToastVisible(true)
+    setIsToastVisible(false)
+    setTimeout(() => {
+      setIsToastVisible(true)
+    }, 20)
   }
 
   const addToCart = (product, quantity = 1) => {
+    // Clear any previous order confirmation receipt so user can checkout new items
+    try {
+      sessionStorage.removeItem('tfipro_last_completed_order')
+    } catch {
+      // Ignore
+    }
+
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.product.id === product.id)
       if (existing) {
