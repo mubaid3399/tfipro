@@ -12,6 +12,9 @@ import {
 } from 'lucide-react'
 import { useProducts } from '../context/ProductContext'
 import ProductCard from '../components/common/ProductCard'
+import SEOHead from '../components/seo/SEOHead'
+import ProductArticle from '../components/product/ProductArticle'
+import { generateProductSeoData } from '../data/seoContent'
 
 const getCategoryKey = (prod) => {
   if (!prod || !prod.id) return 'all'
@@ -39,16 +42,32 @@ const CATEGORY_NAMES = {
 const ProductsDetail = () => {
   const { Id } = useParams()
   const { products, getProductById, addToCart } = useProducts()
+  const product = getProductById(Id)
+
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0]?.name || null)
+  const [selectedImage, setSelectedImage] = useState(
+    product?.colors?.[0]?.image || product?.images?.[0] || product?.image
+  )
 
-  // Reset quantity and notification whenever navigated to a different product
+  // Reset quantity, active color, and active image whenever navigated to a different product
   useEffect(() => {
     setQuantity(1)
     setAdded(false)
-  }, [Id])
+    setSelectedColor(product?.colors?.[0]?.name || null)
+    setSelectedImage(product?.colors?.[0]?.image || product?.images?.[0] || product?.image)
 
-  const product = getProductById(Id)
+    // Normalize URL bar to clean unique product ID if opened via legacy ID (e.g. watchProduct16 -> watch-arabic-boys)
+    if (product && Id && Id !== product.id) {
+      window.history.replaceState(null, '', `/products/${product.id}`)
+    }
+  }, [Id, product])
+
+  const seoData = useMemo(
+    () => generateProductSeoData(product, selectedColor),
+    [product, selectedColor]
+  )
 
   const currentCategoryKey = useMemo(() => getCategoryKey(product), [product])
 
@@ -104,6 +123,7 @@ const ProductsDetail = () => {
 
   const { title, actualPrice, discountedPrice, bestseller, subcategory, image, description } =
     product
+  const baseTitle = seoData?.baseTitle || product.baseTitle || title || 'Product'
 
   const discountPercent =
     actualPrice && discountedPrice && actualPrice > discountedPrice
@@ -111,13 +131,25 @@ const ProductsDetail = () => {
       : null
 
   const handleAdd = () => {
-    addToCart(product, quantity)
+    addToCart(product, quantity, selectedColor, selectedImage)
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
   }
 
   return (
     <main className="mx-auto min-h-[60vh] w-full max-w-7xl px-4 py-6 sm:px-6 sm:py-14 lg:px-8">
+      {/* Deep SEO Head & Schema.org JSON-LD Injector */}
+      <SEOHead
+        title={seoData?.metaTitle}
+        description={seoData?.metaDescription}
+        canonicalUrl={`https://tfipro.pk/products/${product.id}`}
+        image={selectedImage || image}
+        keywords={`${baseTitle}, ${baseTitle} pakistan, ${product.subcategory || ''}, ${selectedColor || ''} ${baseTitle}, buy ${baseTitle} online, tfipro`}
+        productJsonLd={seoData?.productJsonLd}
+        faqJsonLd={seoData?.faqJsonLd}
+        breadcrumbJsonLd={seoData?.breadcrumbJsonLd}
+      />
+
       {/* Breadcrumb - horizontally scrollable without breaking on small screens */}
       <nav
         aria-label="Breadcrumb"
@@ -141,13 +173,77 @@ const ProductsDetail = () => {
 
       {/* Main Product Showcase */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10 lg:gap-14">
-        {/* Product Image */}
-        <div className="flex aspect-4/3 sm:aspect-auto items-center justify-center rounded-2xl bg-slate-100/90 p-4 shadow-xs sm:p-8">
-          <img
-            src={image}
-            alt={title}
-            className="max-h-[300px] sm:max-h-[420px] w-full object-contain drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
-          />
+        {/* Product Image Showcase */}
+        <div className="flex flex-col gap-3">
+          <div className="flex aspect-4/3 sm:aspect-auto items-center justify-center rounded-2xl bg-slate-100/90 p-4 shadow-xs sm:p-8">
+            <img
+              src={selectedImage || image}
+              alt={title}
+              className="max-h-[300px] sm:max-h-[420px] w-full object-contain drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
+            />
+          </div>
+
+          {/* Color Thumbnails (for products with color variants) */}
+          {product.colors && product.colors.length > 1 && (
+            <div className="flex items-center justify-center gap-2.5 overflow-x-auto pb-1">
+              {product.colors.map((col) => {
+                const isActive = selectedColor === col.name
+                return (
+                  <button
+                    key={col.name}
+                    type="button"
+                    onClick={() => {
+                      setSelectedColor(col.name)
+                      setSelectedImage(col.image)
+                    }}
+                    title={col.name}
+                    className={`group relative flex h-16 w-16 cursor-pointer items-center justify-center rounded-xl border bg-white p-1 transition-all ${
+                      isActive
+                        ? 'border-primary ring-2 ring-primary/30 shadow-xs scale-105'
+                        : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-slate-300'
+                    }`}
+                  >
+                    <img
+                      src={col.image}
+                      alt={col.name}
+                      className="h-full w-full object-contain"
+                    />
+                    <span className="absolute -bottom-1 inset-x-0 text-center text-[9px] font-semibold bg-slate-900/80 text-white rounded-b-md px-0.5 truncate">
+                      {col.name}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          )}
+
+          {/* Multi-angle Gallery Thumbnails (for products with multiple shots) */}
+          {!product.colors && product.images && product.images.length > 1 && (
+            <div className="flex items-center justify-center gap-2.5 overflow-x-auto pb-1">
+              {product.images.map((img, idx) => {
+                const isActive = (selectedImage || image) === img
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setSelectedImage(img)}
+                    title={`View ${idx + 1}`}
+                    className={`flex h-14 w-14 cursor-pointer items-center justify-center rounded-xl border bg-white p-1 transition-all ${
+                      isActive
+                        ? 'border-primary ring-2 ring-primary/30 shadow-xs scale-105'
+                        : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-slate-300'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${title} angle ${idx + 1}`}
+                      className="h-full w-full object-contain"
+                    />
+                  </button>
+                )
+              })}
+            </div>
+          )}
         </div>
 
         {/* Product Details */}
@@ -190,6 +286,52 @@ const ProductsDetail = () => {
           <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:mt-6 sm:text-base">
             {description}
           </p>
+
+          {/* Color Selector Pills (only for products with color variants) */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="mt-5 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  Select Color: <span className="font-bold text-slate-900">{selectedColor}</span>
+                </span>
+                <span className="text-xs text-slate-400">
+                  {product.colors.length} options
+                </span>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {product.colors.map((col) => {
+                  const isSelected = selectedColor === col.name
+                  return (
+                    <button
+                      key={col.name}
+                      type="button"
+                      onClick={() => {
+                        setSelectedColor(col.name)
+                        setSelectedImage(col.image)
+                      }}
+                      className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2 text-xs font-medium transition-all ${
+                        isSelected
+                          ? 'border-primary bg-primary text-white shadow-xs font-semibold'
+                          : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-100'
+                      }`}
+                    >
+                      {col.image && (
+                        <img
+                          src={col.image}
+                          alt={col.name}
+                          className={`h-5 w-5 rounded-full object-cover border ${
+                            isSelected ? 'border-white' : 'border-slate-300'
+                          }`}
+                        />
+                      )}
+                      <span>{col.name}</span>
+                      {isSelected && <Check size={13} className="text-white" />}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Quantity Selector and Add to Cart Button (side-by-side on mobile) */}
           <div className="mt-6 flex flex-row items-center gap-3 sm:mt-8 sm:gap-4">
@@ -258,6 +400,9 @@ const ProductsDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* Deep Product Article, AEO Fact Sheet, Color Variant Spotlight, Specs, Pakistan GEO & FAQs */}
+      <ProductArticle product={product} seoData={seoData} />
 
       {/* RELATED PRODUCTS SECTION */}
       {relatedProducts.length > 0 && (

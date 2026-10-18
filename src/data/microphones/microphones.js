@@ -5,7 +5,9 @@ const sampleNote =
 
 export const microphones = [
   {
-    id: 'microphoneProduct2',
+    id: 'microphone-wireless-lavalier-lapel',
+    legacyId: 'microphoneProduct2',
+    category: 'microphones',
     title: 'Wireless Lavalier Lapel Microphone',
     description: `Ultra-compact wireless lavalier clip-on microphone featuring 20m transmission distance, 10-hour battery life, DSP intelligent noise reduction, and universal compatibility. ${sampleNote}`,
     actualPrice: 3999,
@@ -15,7 +17,9 @@ export const microphones = [
     image: asset.wirelessLavalierMic,
   },
   {
-    id: 'microphoneProduct4',
+    id: 'microphone-wireless-set-dual',
+    legacyId: 'microphoneProduct4',
+    category: 'microphones',
     title: 'Wireless Microphone Set',
     description: `Wireless microphone set for audio recording and speaking. ${sampleNote}`,
     actualPrice: 3999,

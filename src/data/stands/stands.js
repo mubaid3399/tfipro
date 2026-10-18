@@ -5,7 +5,9 @@ const sampleNote =
 
 export const stands = [
   {
-    id: 'standProduct1',
+    id: 'stand-ergonomic-foldable-laptop-riser',
+    legacyId: 'standProduct1',
+    category: 'stands',
     title: 'Ergonomic Foldable Laptop Riser Stand',
     description: `Portable multi-angle aluminum laptop riser stand with anti-slip silicone cushions and foldable travel design. ${sampleNote}`,
     actualPrice: 3200,
@@ -15,7 +17,9 @@ export const stands = [
     image: asset.foldableLaptopRiserStand,
   },
   {
-    id: 'standProduct2',
+    id: 'stand-360-swivel-aluminum-desk',
+    legacyId: 'standProduct2',
+    category: 'stands',
     title: '360° Swivel Aluminum Phone & Tablet Stand',
     description: `Premium space gray CNC aluminum desktop stand featuring a 360-degree rotating swivel base and dual pivot tilt adjustment. ${sampleNote}`,
     actualPrice: 1600,
@@ -25,7 +29,9 @@ export const stands = [
     image: asset.swivelAluminumDeskStand,
   },
   {
-    id: 'standProduct3',
+    id: 'stand-pro-swivel-adjustable-mobile',
+    legacyId: 'standProduct3',
+    category: 'stands',
     title: 'Pro 360° Swivel Adjustable Mobile Stand',
     description: `Heavy-duty weighted base phone holder with 360-degree smooth rotation and ergonomic multi-angle viewing for mobile devices. ${sampleNote}`,
     actualPrice: 2200,
@@ -35,7 +41,9 @@ export const stands = [
     image: asset.proSwivelMobileStand,
   },
   {
-    id: 'standProduct4',
+    id: 'stand-wireless-speaker-phone-dock',
+    legacyId: 'standProduct4',
+    category: 'stands',
     title: 'Wireless Speaker & Desktop Phone Stand Dock',
     description: `Versatile 2-in-1 desktop smartphone dock with an integrated Bluetooth wireless speaker base and adjustable folding viewing cradle. ${sampleNote}`,
     actualPrice: 4500,
@@ -45,7 +53,9 @@ export const stands = [
     image: asset.speakerPhoneStandDock,
   },
   {
-    id: 'standProduct5',
+    id: 'stand-telescopic-livestream-mount',
+    legacyId: 'standProduct5',
+    category: 'stands',
     title: 'Telescopic Live Stream & Video Recording Phone Mount',
     description: `Overhead telescopic tripod phone mount with 360° rotational clamp designed for vlogging, video recording, live streaming, and video calls. ${sampleNote}`,
     actualPrice: 2400,
@@ -55,7 +65,9 @@ export const stands = [
     image: asset.telescopicLiveStreamPhoneMount,
   },
   {
-    id: 'standProduct6',
+    id: 'stand-3-5ft-adjustable-tripod-bag',
+    legacyId: 'standProduct6',
+    category: 'stands',
     title: '3.5ft Adjustable Tripod Stand for Mobile & Camera with Bag',
     description: `Lightweight aluminum 3.5ft adjustable tripod stand (Tripod 3110) with 3-way pan head, flip locks, smartphone holder clip, and portable carry bag. ${sampleNote}`,
     actualPrice: 4999,
@@ -65,7 +77,9 @@ export const stands = [
     image: asset.adjustableTripodStand,
   },
   {
-    id: 'standProduct7',
+    id: 'stand-r1s-rotating-selfie-stick-fill-light',
+    legacyId: 'standProduct7',
+    category: 'stands',
     title: 'R1S 360° Rotating Selfie Stick Tripod with Fill Light',
     description: `740mm extendable selfie stick and mini tripod stand in black ABS plastic with 360° rotation, built-in LED fill light, and wireless remote. ${sampleNote}`,
     actualPrice: 2600,
@@ -75,7 +89,9 @@ export const stands = [
     image: asset.selfieStickTripod,
   },
   {
-    id: 'standProduct8',
+    id: 'stand-auto-clamping-wireless-car-mount',
+    legacyId: 'standProduct8',
+    category: 'stands',
     title: 'Automatic Clamping Wireless Car Mount & Charger',
     description: `Smart sensor auto-clamping air vent car phone mount with Qi fast wireless charging, metallic chrome finish, and touch-sensitive release. ${sampleNote}`,
     actualPrice: 3500,
@@ -85,7 +101,9 @@ export const stands = [
     image: asset.wirelessCarMountStand,
   },
   {
-    id: 'standProduct9',
+    id: 'stand-m3-smart-sensor-car-mount-charger',
+    legacyId: 'standProduct9',
+    category: 'stands',
     title: 'M3 Smart Sensor Auto-Clamping Car Wireless Charger Mount',
     description: `Gunmetal black smart car mount featuring electric auto-clamping, dual infrared and touch sensors, Qi wireless & magnetic charging, and ambient LED light. ${sampleNote}`,
     actualPrice: 3800,

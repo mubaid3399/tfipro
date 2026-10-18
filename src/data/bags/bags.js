@@ -5,7 +5,9 @@ const sampleNote =
 
 export const bags = [
   {
-    id: 'bagProduct1',
+    id: 'bag-compact-backpack',
+    legacyId: 'bagProduct1',
+    category: 'bags',
     title: 'Compact Backpack',
     description: `Compact everyday backpack with a practical storage design. ${sampleNote}`,
     actualPrice: 4999,
@@ -15,7 +17,9 @@ export const bags = [
     image: asset.compactBackpack,
   },
   {
-    id: 'bagProduct2',
+    id: 'bag-hard-shell-backpack',
+    legacyId: 'bagProduct2',
+    category: 'bags',
     title: 'Hard-Shell Backpack',
     description: `Structured backpack with a hard-shell exterior. ${sampleNote}`,
     actualPrice: 8999,
@@ -25,7 +29,9 @@ export const bags = [
     image: asset.hardShellBackpack,
   },
   {
-    id: 'bagProduct3',
+    id: 'bag-laptop-backpack',
+    legacyId: 'bagProduct3',
+    category: 'bags',
     title: 'Laptop Backpack',
     description: `Backpack designed to carry a laptop and daily essentials. ${sampleNote}`,
     actualPrice: 3999,
@@ -35,7 +41,9 @@ export const bags = [
     image: asset.laptopBackpack,
   },
   {
-    id: 'bagProduct4',
+    id: 'bag-leather-messenger',
+    legacyId: 'bagProduct4',
+    category: 'bags',
     title: 'Leather Messenger Bag',
     description: `Messenger-style shoulder bag with a leather-look finish. ${sampleNote}`,
     actualPrice: 5800,
@@ -45,7 +53,9 @@ export const bags = [
     image: asset.leatherMessengerBag,
   },
   {
-    id: 'bagProduct5',
+    id: 'bag-roll-top-backpack',
+    legacyId: 'bagProduct5',
+    category: 'bags',
     title: 'Roll-Top Backpack',
     description: `Roll-top backpack for carrying everyday belongings. ${sampleNote}`,
     actualPrice: 8500,
@@ -55,7 +65,9 @@ export const bags = [
     image: asset.rollTopBackpack,
   },
   {
-    id: 'bagProduct6',
+    id: 'bag-two-tone-urban-laptop',
+    legacyId: 'bagProduct6',
+    category: 'bags',
     title: 'Two-Tone Urban Laptop Backpack',
     description: `Modern two-tone commuter backpack with geometric slash front pocket, dual compartments, and padded laptop sleeve. ${sampleNote}`,
     actualPrice: 7600,
@@ -65,7 +77,9 @@ export const bags = [
     image: asset.twoToneUrbanLaptopBackpack,
   },
   {
-    id: 'bagProduct7',
+    id: 'bag-grey-heather-business-laptop',
+    legacyId: 'bagProduct7',
+    category: 'bags',
     title: 'Grey Heather Business Laptop Backpack',
     description: `Streamlined executive backpack in heather grey fabric with a quick-access vertical red zipper pocket and padded shoulder straps. ${sampleNote}`,
     actualPrice: 5600,
@@ -75,7 +89,9 @@ export const bags = [
     image: asset.greyHeatherLaptopBackpack,
   },
   {
-    id: 'bagProduct8',
+    id: 'bag-commuter-usb-charging-laptop',
+    legacyId: 'bagProduct8',
+    category: 'bags',
     title: 'Commuter USB Charging Laptop Backpack',
     description: `Ergonomic lightweight backpack featuring an integrated external USB charging port, breathable mesh back panel, and water-resistant finish. ${sampleNote}`,
     actualPrice: 6800,
@@ -85,7 +101,9 @@ export const bags = [
     image: asset.commuterUsbChargingBackpack,
   },
   {
-    id: 'bagProduct9',
+    id: 'bag-stealth-executive-laptop',
+    legacyId: 'bagProduct9',
+    category: 'bags',
     title: 'Stealth All-Black Executive Backpack',
     description: `Minimalist all-black business backpack with ballistic nylon construction, external USB port pass-through, and dedicated device compartments. ${sampleNote}`,
     actualPrice: 5900,

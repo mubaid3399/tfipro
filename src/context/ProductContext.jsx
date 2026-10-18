@@ -43,7 +43,7 @@ export const ProductProvider = ({ children }) => {
     }, 20)
   }
 
-  const addToCart = (product, quantity = 1) => {
+  const addToCart = (product, quantity = 1, selectedColor = null, selectedImage = null) => {
     // Clear any previous order confirmation receipt so user can checkout new items
     try {
       sessionStorage.removeItem('tfipro_last_completed_order')
@@ -51,18 +51,38 @@ export const ProductProvider = ({ children }) => {
       // Ignore
     }
 
+    const resolvedColor =
+      selectedColor ||
+      product.selectedColor ||
+      (product.colors && product.colors.length > 0 ? product.colors[0].name : null)
+    const cartItemId = resolvedColor ? `${product.id}-${resolvedColor}` : product.id
+    const resolvedImage =
+      selectedImage ||
+      (resolvedColor && product.colors?.find((c) => c.name === resolvedColor)?.image) ||
+      product.image
+
+    const itemProduct = {
+      ...product,
+      id: cartItemId,
+      baseId: product.baseId || product.id,
+      selectedColor: resolvedColor,
+      image: resolvedImage,
+    }
+
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.product.id === product.id)
+      const existing = prevCart.find((item) => item.product.id === cartItemId)
       if (existing) {
         return prevCart.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
+          item.product.id === cartItemId
+            ? { ...item, quantity: item.quantity + quantity, selectedColor: resolvedColor, color: resolvedColor }
             : item
         )
       }
-      return [...prevCart, { product, quantity }]
+      return [...prevCart, { product: itemProduct, quantity, selectedColor: resolvedColor, color: resolvedColor }]
     })
-    showToast('Item added to your bag')
+
+    const colorMsg = resolvedColor ? ` (${resolvedColor})` : ''
+    showToast(`Added ${product.title}${colorMsg} to your bag`)
   }
 
   const removeFromCart = (productId) => {
@@ -105,7 +125,16 @@ export const ProductProvider = ({ children }) => {
   )
 
   const getProductById = (id) => {
-    return products.find((p) => p.id === id)
+    if (!id) return null
+    return (
+      products.find(
+        (p) =>
+          p.id === id ||
+          p.legacyId === id ||
+          p.id.toLowerCase() === id.toLowerCase() ||
+          (p.legacyId && p.legacyId.toLowerCase() === id.toLowerCase())
+      ) || null
+    )
   }
 
   const earbuds = useMemo(

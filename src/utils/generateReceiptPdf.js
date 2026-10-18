@@ -219,7 +219,10 @@ export const generateReceiptPdf = (order) => {
 
     doc.setFont('helvetica', 'bold')
     doc.setTextColor(15, 23, 42)
-    const titleText = doc.splitTextToSize(item.product?.title || 'Product', colDesc - 6)
+    const baseTitle = item.product?.baseTitle || (item.product?.title || 'Product').replace(/\s*\[Color:.*?\]/, '').trim()
+    const chosenColor = item.product?.selectedColor || item.selectedColor || item.color || null
+    const colorText = chosenColor ? ` (${chosenColor})` : ''
+    const titleText = doc.splitTextToSize(baseTitle + colorText, colDesc - 6)
     doc.text(titleText[0] || 'Product', xDesc + 4, y + 6)
 
     doc.setFont('helvetica', 'normal')

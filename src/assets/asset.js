@@ -80,6 +80,42 @@ import wirelessCarMountStand from './wirelessstand.jpeg'
 import aboutHero from './about-hero.jpg'
 import aboutLab from './about-lab.jpg'
 
+// New Watch Products Collection
+import currenLeatherWatch from "./Curren Men's Leather Strap Quartz Watch – Luxury Analog Waterproof Fashion Wrist Watch for Men.jpeg"
+import analogueFashionWatchWhite from './Analogue Fashionable Watch For Men.jpeg'
+import analogueFashionWatchBlack from './Analogue Fashionable Watch For Men Black.jpeg'
+import barrelQuartzWatchBlack from "./New Ultra-Thin Barrel-Shaped Men's Quartz Watch Fashionable Black.jpeg"
+import barrelQuartzWatchBlue from "./New Ultra-Thin Barrel-Shaped Men's Quartz Watch Fashionable Blue.jpeg"
+import barrelQuartzWatchBrown from "./New Ultra-Thin Barrel-Shaped Men's Quartz Watch Fashionable Brown.jpeg"
+import barrelQuartzWatchGreen from "./New Ultra-Thin Barrel-Shaped Men's Quartz Watch Fashionable Green.jpeg"
+import arabicDialWatchBlack from './Watch Arabic Boys black.jpeg'
+import arabicDialWatchLightBlue from './Watch Arabic Boys light blue.jpeg'
+import arabicDialWatchWhite from './Watch Arabic Boys white.jpeg'
+import carbonFiberTigerWatch1 from "./Men's Carbon Fiber Tiger Watch White Marble Design 1.jpeg"
+import carbonFiberTigerWatch2 from "./Men's Carbon Fiber Tiger Watch White Marble Design 2.jpeg"
+import carbonFiberTigerWatch3 from "./Men's Carbon Fiber Tiger Watch White Marble Design 3.jpeg"
+import triangularMechanicalWatchBlack from "./Men's Casual Automatic Mechanical Triangular Dial Watch black.jpeg"
+import triangularMechanicalWatchGold from "./Men's Casual Automatic Mechanical Triangular Dial Watch gold.jpeg"
+import triangularMechanicalWatchSilver from "./Men's Casual Automatic Mechanical Triangular Dial Watch silver.jpeg"
+import originalQuartzStainlessWatch1 from './Original Quartz Watch for Man Waterproof Stainlesssteel.jpeg'
+import originalQuartzStainlessWatch2 from './Original Quartz Watch for Man Waterproof Stainlesssteel 2.jpeg'
+import originalQuartzStainlessWatch3 from './Original Quartz Watch for Man Waterproof Stainlesssteel 3.jpeg'
+import roseGoldHeartWatch1 from './Rose Gold Heart Watch with Sparkles for Girls.jpeg'
+import roseGoldHeartWatch2 from './Rose Gold Heart Watch with Sparkles for Girls  2.jpeg'
+import crystalCutStoneWatchBlack from './Beautiful Crystal Cut Stone Chain Watch black.jpeg'
+import crystalCutStoneWatchPink from './Beautiful Crystal Cut Stone Chain Watch pink.jpeg'
+import crystalCutStoneWatchRed from './Beautiful Crystal Cut Stone Chain Watch red.jpeg'
+import goldenChainWatchGirls1 from './Golden Stainless Steel Chain Watch for Girls.jpeg'
+import goldenChainWatchGirls2 from './Golden Stainless Steel Chain Watch for Girls 2.jpeg'
+import a58PlusJewelryWatchSet from './A58A59 Plus Jewelry Watch Combo Set with Smart Fitness Tracker Band  Stylish Women’s Watch Set  Heart Rate Monitor  Sports Activity Tracker.jpeg'
+import luxuryGoldenCrystalRomanWatch1 from './Luxury Golden Crystal Roman Dial Watch.jpeg'
+import luxuryGoldenCrystalRomanWatch2 from './Luxury Golden Crystal Roman Dial Watch 2.jpeg'
+import digitalBraceletWatch1 from "./Digital Display Women's Bracelet Watch (Buy 1 Get 1 Free).jpeg"
+import digitalBraceletWatch2 from "./Digital Display Women's Bracelet Watch (Buy 1 Get 1 Free) 2.jpeg"
+import stainlessRomanBlackStrapWatch1 from './Stainless Steel Watch with Black Strap & Roman Numeral Dial 1.jpeg'
+import stainlessRomanBlackStrapWatch2 from './Stainless Steel Watch with Black Strap & Roman Numeral Dial 2.jpeg'
+import mensStainlessSteelWatch from "./Men's Stainless Steel Watch.jpeg"
+
 
 export const asset = {
   aboutHero,
@@ -186,6 +222,41 @@ export const asset = {
   usbCPowerAdapter,
   typeCOtgAudioAdapter,
   wirelessCarMountStand,
+  // New Watch Collection
+  currenLeatherWatch,
+  analogueFashionWatchWhite,
+  analogueFashionWatchBlack,
+  barrelQuartzWatchBlack,
+  barrelQuartzWatchBlue,
+  barrelQuartzWatchBrown,
+  barrelQuartzWatchGreen,
+  arabicDialWatchBlack,
+  arabicDialWatchLightBlue,
+  arabicDialWatchWhite,
+  carbonFiberTigerWatch1,
+  carbonFiberTigerWatch2,
+  carbonFiberTigerWatch3,
+  triangularMechanicalWatchBlack,
+  triangularMechanicalWatchGold,
+  triangularMechanicalWatchSilver,
+  originalQuartzStainlessWatch1,
+  originalQuartzStainlessWatch2,
+  originalQuartzStainlessWatch3,
+  roseGoldHeartWatch1,
+  roseGoldHeartWatch2,
+  crystalCutStoneWatchBlack,
+  crystalCutStoneWatchPink,
+  crystalCutStoneWatchRed,
+  goldenChainWatchGirls1,
+  goldenChainWatchGirls2,
+  a58PlusJewelryWatchSet,
+  luxuryGoldenCrystalRomanWatch1,
+  luxuryGoldenCrystalRomanWatch2,
+  digitalBraceletWatch1,
+  digitalBraceletWatch2,
+  stainlessRomanBlackStrapWatch1,
+  stainlessRomanBlackStrapWatch2,
+  mensStainlessSteelWatch,
 }
 
 export default asset

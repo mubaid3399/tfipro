@@ -5,7 +5,9 @@ const sampleNote =
 
 export const headphones = [
   {
-    id: 'headphoneProduct1',
+    id: 'headphone-brown-wireless',
+    legacyId: 'headphoneProduct1',
+    category: 'headphones',
     title: 'Brown Wireless Headphones',
     description: `Brown over-ear headphones with a wireless-style design. ${sampleNote}`,
     actualPrice: 3999,
@@ -15,7 +17,9 @@ export const headphones = [
     image: asset.brownWirelessHeadphones,
   },
   {
-    id: 'headphoneProduct3',
+    id: 'headphone-over-ear-studio',
+    legacyId: 'headphoneProduct3',
+    category: 'headphones',
     title: 'Over-Ear Headphones',
     description: `Over-ear headphones with padded ear cups. ${sampleNote}`,
     actualPrice: 3999,
@@ -25,7 +29,9 @@ export const headphones = [
     image: asset.overEarHeadphones,
   },
   {
-    id: 'headphoneProduct4',
+    id: 'headphone-pink-cat-ear',
+    legacyId: 'headphoneProduct4',
+    category: 'headphones',
     title: 'Pink Cat-Ear Headphones',
     description: `Pink over-ear headphones with decorative cat ears. ${sampleNote}`,
     actualPrice: 3999,
@@ -35,7 +41,9 @@ export const headphones = [
     image: asset.pinkCatEarHeadphones,
   },
   {
-    id: 'headphoneProduct5',
+    id: 'headphone-pink-rgb-gaming',
+    legacyId: 'headphoneProduct5',
+    category: 'headphones',
     title: 'Pink RGB Headphones',
     description: `Pink over-ear headphones with RGB-style lighting. ${sampleNote}`,
     actualPrice: 3999,
@@ -45,7 +53,9 @@ export const headphones = [
     image: asset.pinkRgbHeadphones,
   },
   {
-    id: 'headphoneProduct6',
+    id: 'headphone-wired-gaming-headset',
+    legacyId: 'headphoneProduct6',
+    category: 'headphones',
     title: 'Wired Gaming Headset',
     description: `Wired over-ear gaming headset with a boom microphone. ${sampleNote}`,
     actualPrice: 3999,

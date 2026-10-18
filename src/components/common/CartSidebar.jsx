@@ -87,6 +87,11 @@ const CartSidebar = () => {
                         <h3 className="text-sm font-semibold text-slate-800 line-clamp-2">
                           {product.title}
                         </h3>
+                        {product.selectedColor && (
+                          <p className="mt-0.5 text-xs text-slate-500">
+                            Color: <span className="font-semibold text-slate-700">{product.selectedColor}</span>
+                          </p>
+                        )}
                         <p className="mt-1 text-sm font-bold text-primary">
                           {currency}{price.toLocaleString()}
                         </p>

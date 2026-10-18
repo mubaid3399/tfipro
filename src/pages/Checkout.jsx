@@ -81,12 +81,14 @@ const getWhatsAppOrderUrl = (order) => {
   const customerName = `${order.customer?.firstName || ''} ${order.customer?.lastName || ''}`.trim() || 'Customer'
   const finalCity = order.customer?.resolvedCity || order.customer?.customCity || order.customer?.city || 'Pakistan'
   const itemsText = (order.items || [])
-    .map(
-      (item, idx) =>
-        `${idx + 1}. ${item.product?.title || 'Product'} (Qty: ${item.quantity || 1}) - Rs.${(
-          (item.product?.discountedPrice ?? item.product?.actualPrice ?? 0) * (item.quantity || 1)
-        ).toLocaleString()}`
-    )
+    .map((item, idx) => {
+      const chosenColor = item.product?.selectedColor || item.selectedColor || item.color || null
+      const baseTitle = (item.product?.baseTitle || item.product?.title || 'Product').replace(/\s*\[Color:.*?\]/, '').trim()
+      const colorLabel = chosenColor ? ` [Color: ${chosenColor}]` : ''
+      return `${idx + 1}. ${baseTitle}${colorLabel} (Qty: ${item.quantity || 1}) - Rs.${(
+        (item.product?.discountedPrice ?? item.product?.actualPrice ?? 0) * (item.quantity || 1)
+      ).toLocaleString()}`
+    })
     .join('\n')
 
   const message = [
@@ -372,10 +374,36 @@ const Checkout = () => {
 
       const finalCity = formData.city === 'Other' ? formData.customCity : formData.city
 
+      // Prepare items ensuring every item has explicit color attached to product.title, color, and selectedColor
+      // This guarantees the Google Sheet script logs the exact color variant in "Items Ordered"
+      const preparedItems = cart.map((item) => {
+        const chosenColor =
+          item.product?.selectedColor ||
+          item.selectedColor ||
+          item.color ||
+          (item.product?.colors && item.product.colors.length > 0 ? item.product.colors[0].name : null)
+        const baseTitle = (item.product?.baseTitle || item.product?.title || 'Product').replace(/\s*\[Color:.*?\]/, '').trim()
+        const colorLabel = chosenColor ? ` [Color: ${chosenColor}]` : ''
+        const fullTitle = `${baseTitle}${colorLabel}`
+
+        return {
+          ...item,
+          selectedColor: chosenColor,
+          color: chosenColor,
+          product: {
+            ...item.product,
+            baseTitle,
+            selectedColor: chosenColor,
+            color: chosenColor,
+            title: fullTitle,
+          },
+        }
+      })
+
       const completedOrder = {
         id: generatedOrderId,
         date: orderDate,
-        items: [...cart],
+        items: preparedItems,
         subtotal: cartTotal,
         discount: discountAmount,
         couponCode: appliedCoupon?.code || null,
@@ -588,19 +616,26 @@ const Checkout = () => {
                   Order items
                 </h2>
                 <ul className="divide-y divide-slate-100">
-                  {orderComplete.items.map(({ product, quantity }) => {
+                  {orderComplete.items.map(({ product, quantity, selectedColor: itemColor }) => {
                     const price = product.discountedPrice ?? product.actualPrice ?? 0
+                    const displayTitle = product.baseTitle || (product.title || 'Product').replace(/\s*\[Color:.*?\]/, '').trim()
+                    const displayColor = product.selectedColor || itemColor || product.color
                     return (
                       <li key={product.id} className="flex items-center gap-4 px-6 py-4">
                         <img
                           src={product.image}
-                          alt={product.title}
+                          alt={displayTitle}
                           className="h-14 w-14 shrink-0 rounded-lg border border-slate-200 bg-white object-contain p-1"
                         />
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-medium text-slate-900">
-                            {product.title}
+                            {displayTitle}
                           </p>
+                          {displayColor && (
+                            <p className="text-xs text-slate-500">
+                              Color: <span className="font-semibold text-slate-700">{displayColor}</span>
+                            </p>
+                          )}
                           <p className="mt-0.5 text-xs text-slate-500">
                             {currency}{price.toLocaleString()} × {quantity}
                           </p>
@@ -839,6 +874,11 @@ const Checkout = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-semibold text-slate-800 truncate">{product.title}</p>
+                      {product.selectedColor && (
+                        <p className="text-[10px] font-medium text-slate-500">
+                          Color: <span className="font-semibold text-slate-700">{product.selectedColor}</span>
+                        </p>
+                      )}
                       <p className="text-[11px] text-slate-500">
                         {currency}{price.toLocaleString()} each
                       </p>
@@ -1536,6 +1576,11 @@ const Checkout = () => {
                           <h3 className="text-xs font-semibold text-slate-800 truncate" title={product.title}>
                             {product.title}
                           </h3>
+                          {product.selectedColor && (
+                            <p className="text-[11px] font-medium text-slate-500">
+                              Color: <span className="font-semibold text-slate-700">{product.selectedColor}</span>
+                            </p>
+                          )}
                           {product.subcategory && (
                             <p className="text-[10px] uppercase tracking-wider text-slate-400">
                               {product.subcategory}

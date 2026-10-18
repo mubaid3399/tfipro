@@ -5,7 +5,9 @@ const sampleNote =
 
 export const accessories = [
   {
-    id: 'accessoryProduct1',
+    id: 'accessory-fast-power-adapter',
+    legacyId: 'accessoryProduct1',
+    category: 'accessories',
     title: 'Power Adapter',
     description: `Compact power adapter for compatible electronic devices. ${sampleNote}`,
     actualPrice: 3999,
@@ -15,7 +17,9 @@ export const accessories = [
     image: asset.powerAdapter,
   },
   {
-    id: 'accessoryProduct2',
+    id: 'accessory-portable-power-bank',
+    legacyId: 'accessoryProduct2',
+    category: 'accessories',
     title: 'Power Bank',
     description: `Portable power bank for charging compatible devices. ${sampleNote}`,
     actualPrice: 3999,
@@ -25,7 +29,9 @@ export const accessories = [
     image: asset.powerBank,
   },
   {
-    id: 'accessoryProduct3',
+    id: 'accessory-ultra-7in1-smartwatch',
+    legacyId: 'accessoryProduct3',
+    category: 'accessories',
     title: 'Ultra 7 in 1 Strap Smartwatch',
     description: `Ultra smartwatch featuring 7 interchangeable straps. ${sampleNote}`,
     actualPrice: 4200,
@@ -35,7 +41,9 @@ export const accessories = [
     image: asset.ultra7in1OrangeSmartwatch,
   },
   {
-    id: 'accessoryProduct4',
+    id: 'accessory-3in1-wireless-charging-station',
+    legacyId: 'accessoryProduct4',
+    category: 'accessories',
     title: 'Three-in-One Wireless Charging Station',
     description: `Wireless charging station shown with multiple device charging areas. ${sampleNote}`,
     actualPrice: 5600,
@@ -45,7 +53,9 @@ export const accessories = [
     image: asset.wirelessChargingStation,
   },
   {
-    id: 'accessoryProduct5',
+    id: 'accessory-usb-audio-adapter',
+    legacyId: 'accessoryProduct5',
+    category: 'accessories',
     title: 'USB Audio Adapter',
     description: `USB audio accessory for compatible devices. ${sampleNote}`,
     actualPrice: 3200,
@@ -55,7 +65,9 @@ export const accessories = [
     image: asset.usbAudioAdapter,
   },
   {
-    id: 'accessoryProduct6',
+    id: 'accessory-dual-usb-wall-charger',
+    legacyId: 'accessoryProduct6',
+    category: 'accessories',
     title: 'USB Wall Charger',
     description: `Wall charger with USB ports for compatible devices. ${sampleNote}`,
     actualPrice: 2800,
@@ -65,7 +77,9 @@ export const accessories = [
     image: asset.usbWallCharger,
   },
   {
-    id: 'accessoryProduct7',
+    id: 'accessory-high-speed-wifi-extender',
+    legacyId: 'accessoryProduct7',
+    category: 'accessories',
     title: 'Wi-Fi Extender',
     description: `Plug-in Wi-Fi extender for compatible wireless networks. ${sampleNote}`,
     actualPrice: 3999,
@@ -75,7 +89,9 @@ export const accessories = [
     image: asset.wifiExtender,
   },
   {
-    id: 'accessoryProduct8',
+    id: 'accessory-25w-usbc-power-adapter',
+    legacyId: 'accessoryProduct8',
+    category: 'accessories',
     title: '25W USB-C Power Adapter',
     description: `25W USB-C fast charging wall power adapter with foldable pins for smartphones and portable devices. ${sampleNote}`,
     actualPrice: 2200,
@@ -85,7 +101,9 @@ export const accessories = [
     image: asset.usbCPowerAdapter,
   },
   {
-    id: 'accessoryProduct9',
+    id: 'accessory-typec-otg-audio-adapter',
+    legacyId: 'accessoryProduct9',
+    category: 'accessories',
     title: 'Type-C to Type-C & 3.5mm Audio Adapter (2-in-1 OTG)',
     description: `2-in-1 Type-C splitter adapter featuring simultaneous Type-C fast charging and 3.5mm audio headphone jack output. ${sampleNote}`,
     actualPrice: 3200,

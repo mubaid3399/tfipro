@@ -71,11 +71,16 @@ const Cart = () => {
                 {/* Info */}
                 <div className="flex flex-1 flex-col">
                   <Link
-                    to={`/products/${product.id}`}
+                    to={`/products/${product.baseId || product.id}`}
                     className="text-sm font-semibold text-slate-800 hover:text-primary transition-colors sm:text-base line-clamp-1"
                   >
                     {product.title}
                   </Link>
+                  {product.selectedColor && (
+                    <p className="mt-0.5 text-xs text-slate-500">
+                      Color: <span className="font-semibold text-slate-700">{product.selectedColor}</span>
+                    </p>
+                  )}
 
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="text-sm font-bold text-slate-900">
