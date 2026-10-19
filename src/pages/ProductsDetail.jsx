@@ -179,6 +179,9 @@ const ProductsDetail = () => {
             <img
               src={selectedImage || image}
               alt={title}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="max-h-[300px] sm:max-h-[420px] w-full object-contain drop-shadow-md select-none transition-transform duration-300 hover:scale-105"
             />
           </div>

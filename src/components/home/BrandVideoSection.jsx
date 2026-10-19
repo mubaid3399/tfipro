@@ -22,6 +22,7 @@ const BrandVideoSection = () => {
               loop
               muted
               playsInline
+              preload="metadata"
             />
             
             {/* Optional Overlay / Branding inside video */}

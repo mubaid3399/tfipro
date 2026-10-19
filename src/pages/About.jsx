@@ -96,6 +96,9 @@ const About = () => {
           <img
             src={asset.aboutHero}
             alt="TFiPro audio products"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="aspect-[4/3] w-full rounded-lg object-cover"
           />
         </div>
@@ -119,6 +122,8 @@ const About = () => {
           <img
             src={asset.aboutLab}
             alt="TFiPro team testing audio products"
+            loading="lazy"
+            decoding="async"
             className="aspect-[4/3] w-full rounded-lg object-cover"
           />
           <div>

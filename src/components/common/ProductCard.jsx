@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { ShoppingBag, Eye, Heart } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useProducts } from '../../context/ProductContext'
 
 const ProductCard = ({ product, onAddToCart, onQuickView }) => {
   const { addToCart } = useProducts()
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   if (!product) return null
 
@@ -68,15 +70,24 @@ const ProductCard = ({ product, onAddToCart, onQuickView }) => {
         {/* Product Image */}
         <Link
           to={`/products/${id}`}
-          className="flex h-full w-full cursor-pointer items-center justify-center overflow-hidden"
+          className="relative flex h-full w-full cursor-pointer items-center justify-center overflow-hidden"
           tabIndex={-1}
         >
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="h-full w-full animate-pulse rounded-lg bg-slate-200/80" />
+            </div>
+          )}
           <img
             src={image}
             alt={title}
             loading="lazy"
+            decoding="async"
             draggable="false"
-            className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105 select-none"
+            onLoad={() => setImageLoaded(true)}
+            className={`h-full w-full object-contain select-none transition-all duration-300 ease-out group-hover:scale-105 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
           />
         </Link>
 

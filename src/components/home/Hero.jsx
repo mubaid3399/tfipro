@@ -278,6 +278,9 @@ const Hero = () => {
                 src={image}
                 alt={alt}
                 draggable="false"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding="async"
                 className="h-full w-full select-none object-cover will-change-transform"
               />
             </div>

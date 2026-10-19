@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const CategoryCard = ({ title, itemCount, image, link, startingPrice }) => {
+  const [imageLoaded, setImageLoaded] = useState(false)
+
   return (
     <Link
       to={link || '/products'}
@@ -9,11 +12,20 @@ const CategoryCard = ({ title, itemCount, image, link, startingPrice }) => {
     >
       {/* Category Image with circular badge effect */}
       <div className="relative aspect-square w-full max-w-[200px] overflow-hidden rounded-xl bg-white p-3 shadow-inner">
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-full w-full animate-pulse rounded-lg bg-slate-100" />
+          </div>
+        )}
         <img
           src={image}
           alt={title}
           loading="lazy"
-          className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
+          decoding="async"
+          onLoad={() => setImageLoaded(true)}
+          className={`h-full w-full object-contain transition-all duration-500 ease-out group-hover:scale-110 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
         />
       </div>
 
