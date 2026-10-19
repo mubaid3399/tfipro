@@ -1472,10 +1472,10 @@ const Checkout = () => {
                           <div className="flex justify-between items-center text-slate-700">
                             <span className="text-slate-400 font-sans">Raast ID:</span>
                             <div className="flex items-center gap-1.5 font-bold">
-                              <span>03000000000</span>
+                              <span>03029666578</span>
                               <button
                                 type="button"
-                                onClick={() => handleCopy('03000000000', 'raast')}
+                                onClick={() => handleCopy('03029666578', 'raast')}
                                 className="cursor-pointer text-primary hover:text-primary/70"
                                 title="Copy Raast"
                               >
@@ -1485,7 +1485,7 @@ const Checkout = () => {
                           </div>
                         </div>
                         <p className="text-[11px] text-slate-500">
-                          Please send the payment receipt screenshot via WhatsApp to <span className="font-semibold text-slate-700">+92 300 0000000</span> along with your Order ID for instant verification.
+                          Please send the payment receipt screenshot via WhatsApp to <span className="font-semibold text-slate-700">{CLIENT_WHATSAPP_DISPLAY}</span> along with your Order ID for instant verification.
                         </p>
                       </div>
                     )}
