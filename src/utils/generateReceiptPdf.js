@@ -41,7 +41,7 @@ export const generateReceiptPdf = (order) => {
   doc.setFontSize(8)
   doc.setTextColor(71, 85, 105)
   doc.text('Official Audio Gear & Tech Accessories Store', margin + 6, y + 13)
-  doc.text('Support & WhatsApp: +92 321 3314635  |  Web: tfipro.pk', margin + 6, y + 18)
+  doc.text('Support & WhatsApp: +92 321 3314635  |  Web: tfipro.store', margin + 6, y + 18)
   doc.text('Lahore, Pakistan', margin + 6, y + 23)
 
   // Right: Document Title & Order ID in clean box

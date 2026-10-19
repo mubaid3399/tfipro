@@ -142,7 +142,7 @@ const ProductsDetail = () => {
       <SEOHead
         title={seoData?.metaTitle}
         description={seoData?.metaDescription}
-        canonicalUrl={`https://tfipro.pk/products/${product.id}`}
+        canonicalUrl={`https://tfipro.store/products/${product.id}`}
         image={selectedImage || image}
         keywords={`${baseTitle}, ${baseTitle} pakistan, ${product.subcategory || ''}, ${selectedColor || ''} ${baseTitle}, buy ${baseTitle} online, tfipro`}
         productJsonLd={seoData?.productJsonLd}

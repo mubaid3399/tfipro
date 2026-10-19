@@ -310,7 +310,7 @@ export const generateProductSeoData = (product, selectedColorName = null) => {
     },
     offers: {
       '@type': 'Offer',
-      url: `https://tfipro.pk/products/${product.id}${activeColor ? `?color=${encodeURIComponent(activeColor)}` : ''}`,
+      url: `https://tfipro.store/products/${product.id}${activeColor ? `?color=${encodeURIComponent(activeColor)}` : ''}`,
       priceCurrency: 'PKR',
       price: price,
       priceValidUntil: '2027-12-31',
@@ -320,7 +320,7 @@ export const generateProductSeoData = (product, selectedColorName = null) => {
         '@type': 'Organization',
         name: 'TFiPro Pakistan',
         telephone: '+92 321 3314635',
-        url: 'https://tfipro.pk',
+        url: 'https://tfipro.store',
       },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
@@ -388,19 +388,19 @@ export const generateProductSeoData = (product, selectedColorName = null) => {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://tfipro.pk',
+        item: 'https://tfipro.store',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: subcategory || 'Products',
-        item: `https://tfipro.pk/products?category=${category}`,
+        item: `https://tfipro.store/products?category=${category}`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: baseTitle,
-        item: `https://tfipro.pk/products/${product.id}`,
+        item: `https://tfipro.store/products/${product.id}`,
       },
     ],
   }
